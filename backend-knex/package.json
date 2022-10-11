@@ -4,9 +4,11 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "migrate:create": "npx knex migrate:make $npm_config_name",
-    "migrate:start": "npx knex migrate:latest",
-    "migrate:rollback": "npx knex migrate:rollback"
+    "migrate:make": "npx knex migrate:make $npm_config_name",
+    "migrate:run": "npx knex migrate:latest",
+    "migrate:rollback": "npx knex migrate:rollback",
+    "seed:run": "npx knex seed:run ",
+    "seed:make": "npx knex seed:make fake-data"
   },
   "dependencies": {
     "knex": "^2.3.0",
