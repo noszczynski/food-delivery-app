@@ -1,3 +1,7 @@
+import bcrypt from "bcryptjs";
+
+const generatePassword = () => bcrypt.hash("s4mpl3Pa55word", 10);
+
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> } 
@@ -15,12 +19,12 @@ export async function seed(knex) {
 		{
 			id: 1,
 			email: "admin@fooddelivery.com",
-			password: "test451"
+			password: await generatePassword(),
 		},
 		{
 			id: 2,
 			email: "user@fooddelivery.com",
-			password: "test451"
+			password: await generatePassword(),
 		},
 	]);
 

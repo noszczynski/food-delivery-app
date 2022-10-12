@@ -11,6 +11,7 @@
     "seed:make": "npx knex seed:make fake-data"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "knex": "^2.3.0",
     "sqlite3": "^5.1.2"
   }
