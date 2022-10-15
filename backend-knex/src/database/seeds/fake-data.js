@@ -116,6 +116,10 @@ export async function seed(knex) {
 	await knex("deliveries").insert([
 		{
 			delivery_date: new Date(),
+			order_id: 1
+		},
+		{
+			delivery_date: new Date(),
 			order_id: 2
 		}
 	]);

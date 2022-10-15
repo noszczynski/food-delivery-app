@@ -3,16 +3,29 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "start": "node src/main.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "migrate:make": "npx knex migrate:make $npm_config_name",
-    "migrate:run": "npx knex migrate:latest",
-    "migrate:rollback": "npx knex migrate:rollback",
-    "seed:run": "npx knex seed:run ",
-    "seed:make": "npx knex seed:make fake-data"
+
+    "migrate:make": "knex migrate:make $npm_config_name",
+    "migrate:run": "knex migrate:latest",
+    "migrate:prod": "env-cmd knex migrate:latest --env production",
+    "migrate:rollback": "knex migrate:rollback",
+    "migrate:rollback:prod": "env-cmd knex migrate:rollback --env production",
+
+    "seed:run": "knex seed:run",
+    "seed:prod": "env-cmd knex seed:run --env production",
+    "seed:make": "knex seed:make fake-data",
+
+    "query:restaurants": "node test-queries/restaurants.query.js",
+    "query:orders": "node test-queries/orders.query.js",
+    "query:orders-info": "node test-queries/orders-complete.query.js",
+    "mutation:remove-restaurant": "node test-queries/remove-restaurant.mutation.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "env-cmd": "^10.1.0",
     "knex": "^2.3.0",
+    "mysql": "^2.18.1",
     "sqlite3": "^5.1.2"
   }
 }
