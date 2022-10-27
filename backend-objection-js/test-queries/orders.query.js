@@ -1,8 +1,8 @@
 import {knex} from "../src/database/connection.js";
+import {Order} from "../src/models/Order.js";
 
-const orders = await knex("orders").leftJoin("users", {"orders.user_id": "users.id"});
+const orders = await Order.query().withGraphFetched("user");
+
 await knex.destroy();
 
 console.log(orders);
-
-export default orders;
