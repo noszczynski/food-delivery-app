@@ -1,11 +1,21 @@
-import {knex} from "../src/database/connection.js";
+import { connection } from "../src/database/connection.js";
+import { Restaurant } from "../src/models/Restaurant.js";
 
 try {
-	const result = await knex("restaurants2").where("id", 2).del();
-	console.log(result);
+	const restaurant = await Restaurant
+		.query()
+		.findById(2)
+		.throwIfNotFound({
+			message: "Restaurant not exist"
+		});
 
-} catch (error) {
-	console.error(error);
+	await restaurant.$query().del();
+	console.log(restaurant);
+} catch( e ) {
+	console.error("There is error:");
+	console.log(e);
 }
 
-await knex.destroy();
+await connection.destroy();
+
+

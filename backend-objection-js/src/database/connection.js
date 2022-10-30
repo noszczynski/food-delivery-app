@@ -4,9 +4,9 @@ import {knexSnakeCaseMappers, Model} from "objection";
 
 const env = process.env.NODE_ENV || "development";
 
-export const knex = Knex({
+export const connection = Knex({
 	...knexfile[env],
 	...knexSnakeCaseMappers()
 });
 
-Model.knex(knex);
+Model.knex(connection);

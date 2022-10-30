@@ -1,8 +1,8 @@
-import {knex} from "../src/database/connection.js";
+import {connection} from "../src/database/connection.js";
 import {Order} from "../src/models/Order.js";
 
 const orders = await Order.query().withGraphFetched("user");
 
-await knex.destroy();
+await connection.destroy();
 
 console.log(orders);
