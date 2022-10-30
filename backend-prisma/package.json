@@ -1,0 +1,16 @@
+{
+  "name": "backend-prisma",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "migrate": "prisma migrate dev"
+  },
+  "devDependencies": {
+    "prisma": "^4.2.1"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.2.1"
+  }
+}
